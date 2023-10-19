@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-gunicorn --worker-tmp-dir /dev/shm blango.wsgi:application --bind unix:/dev/shm/gunicorn.sock
+gunicorn blango.wsgi:application --bind 0.0.0.0:8000
+
