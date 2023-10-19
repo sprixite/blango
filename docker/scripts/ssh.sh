@@ -15,7 +15,7 @@ else
 	args="${@:1}"
 fi
 
-container=trail
+container=blango
 
 docker inspect --format={{.State.Running}} $container &> /dev/null
 

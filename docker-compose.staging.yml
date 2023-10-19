@@ -15,7 +15,7 @@ services:
     command: ./docker/scripts/run-gunicorn
     env_file:
       - ./docker/env.db
-    container_name: trail
+    container_name: blango
     volumes:
       - .:/opt/code
       - static_volume:/opt/code/staticfiles
