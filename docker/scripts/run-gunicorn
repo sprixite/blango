@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+gunicorn --worker-tmp-dir /dev/shm barebones.wsgi:application --bind unix:/dev/shm/gunicorn.sock

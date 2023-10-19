@@ -1,0 +1,39 @@
+version: "3.4"
+
+services:
+  db:
+    image: postgres:13.4
+    env_file:
+      - ./docker/env.db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/staging.Dockerfile
+    command: ./docker/scripts/run-gunicorn
+    env_file:
+      - ./docker/env.db
+    container_name: trail
+    volumes:
+      - .:/opt/code
+      - static_volume:/opt/code/staticfiles
+      - shm:/dev/shm
+    depends_on:
+      - db
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 8003:80
+    depends_on:
+      - app
+    volumes:
+      - static_volume:/opt/code/staticfiles
+      - shm:/dev/shm
+
+volumes:
+  static_volume:
+  shm:
+  pgdata:

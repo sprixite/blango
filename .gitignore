@@ -1,0 +1,14 @@
+*.swp
+venv
+__pycache__
+db.sqlite3
+.env
+.idea/
+media/
+node_modules/
+.coverage
+.DS_Store
+Pipfile.lock
+staticfiles/
+docker/env.db
+htmlcov/
